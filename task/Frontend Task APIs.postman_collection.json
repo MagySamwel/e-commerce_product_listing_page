@@ -1,0 +1,105 @@
+{
+	"info": {
+		"_postman_id": "841a62be-96ef-45e0-a2c7-ca979d473070",
+		"name": "Frontend Task APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30342070",
+		"_collection_link": "https://mitchdesigns-team.postman.co/workspace/3e1bd0d9-e94e-4d10-8050-b97cebc3acf3/collection/30342070-841a62be-96ef-45e0-a2c7-ca979d473070?action=share&source=collection_link&creator=30342070"
+	},
+	"item": [
+		{
+			"name": "GET Single Product (ID = 1)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "en",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://task.woosonicpwa.com/api/products/1",
+					"protocol": "https",
+					"host": [
+						"task",
+						"woosonicpwa",
+						"com"
+					],
+					"path": [
+						"api",
+						"products",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Combined Filters: Brand + Price + Rating",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "en",
+						"description": "en or fr"
+					}
+				],
+				"url": {
+					"raw": "https://task.woosonicpwa.com/api/products?size=M&brand=Adidas&status=active&min_price=150&max_price=400&min_rating=3&sort_by=price&sort_order=asc",
+					"protocol": "https",
+					"host": [
+						"task",
+						"woosonicpwa",
+						"com"
+					],
+					"path": [
+						"api",
+						"products"
+					],
+					"query": [
+						{
+							"key": "size",
+							"value": "M",
+							"description": "All Sizes ('XS', 'S', 'M', 'L', 'XL')"
+						},
+						{
+							"key": "brand",
+							"value": "Adidas",
+							"description": "All Brands ('Nike', 'Adidas', 'Puma', 'Reebok')"
+						},
+						{
+							"key": "status",
+							"value": "active",
+							"description": "(active - inactive)"
+						},
+						{
+							"key": "min_price",
+							"value": "150"
+						},
+						{
+							"key": "max_price",
+							"value": "400"
+						},
+						{
+							"key": "min_rating",
+							"value": "3"
+						},
+						{
+							"key": "sort_by",
+							"value": "price",
+							"description": "sort_by=rating  (best rating), price, created_at (with sort_order 'asc', 'desc' ) "
+						},
+						{
+							"key": "sort_order",
+							"value": "asc",
+							"description": "'asc', 'desc'"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
