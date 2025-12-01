@@ -62,7 +62,7 @@ function PaginationControls({
 
   return (
     <nav
-      className="flex flex-col gap-4 border-t border-gray-200 pt-6 mt-6"
+      className="flex flex-col items-center justify-center gap-4 border-t border-gray-200 pt-6 mt-6"
       aria-label="Pagination"
     >
       <div className="text-sm text-gray-600">
