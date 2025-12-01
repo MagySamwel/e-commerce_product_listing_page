@@ -69,6 +69,15 @@ See `task/Frontend Task APIs.postman_collection.json` for detailed request/respo
 
 ---
 
+## 📄 Pagination
+
+- The `/products` API already returns pagination metadata (`current_page`, `total_pages`, `per_page`, etc.).  
+- The Products page reads the `page` query parameter and forwards it when fetching data.  
+- UI controls live in `components/ui/paginationControls.tsx` and preserve all active filters when switching pages.  
+- Pagination is rendered on both desktop and mobile layouts directly beneath the product grid.
+
+---
+
 ## ✅ Assumptions
 
 - The API only supports `en` and `fr` locales; other languages fall back to English.
@@ -87,7 +96,7 @@ See `task/Frontend Task APIs.postman_collection.json` for detailed request/respo
 ## 🚀 Future Improvements
 
 - Implement real cart functionality (state management + checkout flow).
-- Add pagination / infinite scroll based on API metadata.
+- Offer optional infinite scroll (in addition to the current pagination).
 - Support multiple product images with thumbnails and zoom.
 - Add automated tests (unit + integration) for filtering logic and data fetching.
 
