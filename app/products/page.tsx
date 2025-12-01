@@ -7,6 +7,7 @@ import { fetchProducts, ProductsApiResponse } from "@/lib/api/products";
 import { ProductFilters } from "@/lib/types/filters";
 import ErrorPage from "@/components/ui/error";
 import Image from "next/image";
+import PaginationControls from "@/components/ui/paginationControls";
 
 interface ProductsPageProps {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -80,7 +81,13 @@ async function Page({ searchParams }: ProductsPageProps) {
           {/* Products Grid */}
           <div className="p-4">
             {products.length > 0 ? (
-              <ProductGrid products={products} />
+              <>
+                <ProductGrid products={products} />
+                <PaginationControls
+                  pagination={pagination}
+                  searchParams={params}
+                />
+              </>
             ) : (
               <div className="flex items-center flex-col justify-center py-20">
                 <Image
@@ -110,7 +117,13 @@ async function Page({ searchParams }: ProductsPageProps) {
         {/* Products Grid */}
         <div className="p-4">
           {products.length > 0 ? (
-            <ProductGrid products={products} />
+            <>
+              <ProductGrid products={products} />
+              <PaginationControls
+                pagination={pagination}
+                searchParams={params}
+              />
+            </>
           ) : (
             <div className="flex items-center flex-col justify-center py-20">
               <Image
