@@ -21,7 +21,6 @@ function ProductCard({ product }: { product: Product }) {
         <Heart className="absolute top-4 right-3" color="grey" size={22.88} />
       </div>
       <div className="mt-2 ">
-        {/* <div> */}
           <p className="text-base leading-tight">{product.name}</p>
           <p className="text-xs">{product.brands[0]}</p>
           <div className="flex gap-1">
@@ -29,7 +28,6 @@ function ProductCard({ product }: { product: Product }) {
             <p className="text-xs text-gray-500">({product.reviews_count})</p>
           </div>
           <p className="font-semibold">${Number(product.price).toFixed()}</p>
-        {/* </div> */}
         <div>
           <Circle
             className="inline-block mr-1"

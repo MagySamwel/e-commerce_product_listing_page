@@ -10,12 +10,12 @@ function RatingStars({ rating }: { rating: number }) {
         stars.push(<Star key={i} fill="#f8f871ff" strokeWidth={0} size={17}/>);
       } else if (i === fullStars && hasHalfStar) {
         stars.push(<StarHalf key={i}  fill="#f8f871ff" strokeWidth={0} size={17}/>);
-      } else if (i > fullStars) {
+      } else if (i >= fullStars) {
         stars.push(<Star key={i} strokeWidth={1} color="#f8f871ff" size={17}/>);
       }
     }
 
-    return <div className="flex items-center text-sm y-[1px]">{stars}</div>;
+    return <div className="flex items-center text-sm">{stars}</div>;
 }
 
 export default RatingStars

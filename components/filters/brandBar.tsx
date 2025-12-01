@@ -29,7 +29,7 @@ function BrandBar() {
     }
 
     const queryString = params.toString();
-    return `/products${queryString ? `?${queryString}` : ''}`;
+    return queryString ? '/products?' + queryString : '/';
   };
 
   const handleRemoveBrand = (e: React.MouseEvent) => {
@@ -39,7 +39,7 @@ function BrandBar() {
   };
 
   return (
-    <div className="flex items-center gap-3 overflow-x-auto py-4 px-4 bg-white">
+    <div className="flex items-center sm:justify-center gap-3 overflow-x-auto px-4 bg-white">
 
       {/* Brand buttons */}
       {brands.map((item) => {
@@ -51,7 +51,7 @@ function BrandBar() {
             href={buildBrandUrl(item.name)}
             className={`flex-shrink-0 bg-gray-100 flex items-center gap-2 p-1 rounded-xl ${
               isActive
-                ? 'border-2 border-navy-100'
+                ? 'border-2 border-[#0C4B54]'
                 : 'hover:bg-gray-200'
             }`}
           >
@@ -62,7 +62,7 @@ function BrandBar() {
               height={24}
               className={`h-10 w-auto object-contain rounded-lg bg-white border-5`}
             />
-            <span className={`text-sm font-medium ${isActive ? '' : 'me-2'}`}>
+            <span className={`text-[#1D1E20] font-medium px-2`}>
               {item.name}
             </span>
             {isActive && (

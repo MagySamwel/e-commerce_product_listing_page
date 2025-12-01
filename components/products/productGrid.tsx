@@ -1,12 +1,16 @@
 import { Product } from "../../lib/types/product";
 import ProductCard from "./productCard";
+import { Suspense } from "react";
+import Image from "next/image";
+import Skelton from "../ui/skelton";
 
 function ProductGrid({ products }: { products: Product[] }) {
-    if (products.length === 0) return <p>No products found.</p>;
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 p-2">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
+        <Suspense fallback={<Skelton />} key={product.id}>
+          <ProductCard product={product} />
+        </Suspense>
       ))}
     </div>
   );
