@@ -50,7 +50,7 @@ async function Page({ searchParams }: ProductsPageProps) {
     return <ErrorPage error={new Error()} />;
   }
 
-  const { data: products } = response;
+  const { data: products, pagination } = response;
 
   return (
     <div className="min-h-screen">

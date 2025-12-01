@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# E-commerce Product Listing Page
 
-## Getting Started
+This project implements a responsive product listing and product details experience powered by the public task API. It is built with **Next.js App Router**, **TypeScript**, and **Tailwind CSS**.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🧰 Setup Instructions
+
+1. **Clone the repository**
+   ```bash
+   git clone <repo-url>
+   cd e-commerce_product_listing_page
+   ```
+
+2. **Install dependencies** (Node.js ≥ 18)
+   ```bash
+   npm install
+   ```
+
+3. **Configure environment variables** (see the section below) in a `.env.local` file at the project root.
+
+4. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+   The app is available at [http://localhost:3000](http://localhost:3000).
+
+5. *(Optional)* Run lint checks
+   ```bash
+   npm run lint
+   ```
+
+---
+
+## ▶️ How to Run the Project
+
+- **Development:** `npm run dev`
+- **Production build:** `npm run build && npm run start`
+- **Linting / formatting:** `npm run lint`
+
+The App Router automatically handles hot reloading while developing.
+
+---
+
+## 🔐 Environment Variables
+
+Create a `.env.local` file with the following variable:
+
+```env
+NEXT_PUBLIC_API_URL=https://task.woosonicpwa.com/api
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- `NEXT_PUBLIC_API_URL` – Base URL for the task API. This must be accessible on the client because filters and the mobile modal make client-side requests.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+You can point this variable to staging or mock servers when testing.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🌐 API Endpoints Used
 
-To learn more about Next.js, take a look at the following resources:
+All requests include the `Accept-Language` header (`en` by default, `fr` optional).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Endpoint | Method | Usage |
+|----------|--------|-------|
+| `/products` | `GET` | Fetch paginated product listings with filters (brand, size, price, rating, status, page, sort). |
+| `/products/{id}` | `GET` | Fetch full product details, including available sizes and reviews. |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+See `task/Frontend Task APIs.postman_collection.json` for detailed request/response examples.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## ✅ Assumptions
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- The API only supports `en` and `fr` locales; other languages fall back to English.
+- Available sizes returned by `/products/{id}` are trustworthy—any sizes missing from `available_sizes` are treated as unavailable/disabled in the UI.
+- All monetary values are provided in USD and can be formatted with a simple `$` prefix.
+- Product images are single URLs; no gallery endpoints are provided, so a single hero image is displayed.
+- Filtering and sorting are fully handled server-side; the UI reflects URL query parameters without additional client-side list manipulation.
+
+---
+
+## ⚠️ Known Limitations
+
+- “Add to Cart” and language are UI-only (no cart persistence or API integration).
+---
+
+## 🚀 Future Improvements
+
+- Implement real cart functionality (state management + checkout flow).
+- Add pagination / infinite scroll based on API metadata.
+- Support multiple product images with thumbnails and zoom.
+- Add automated tests (unit + integration) for filtering logic and data fetching.
+

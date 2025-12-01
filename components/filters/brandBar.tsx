@@ -39,7 +39,7 @@ function BrandBar() {
   };
 
   return (
-    <div className="flex items-center sm:justify-center gap-3 overflow-x-auto px-4 bg-white">
+    <div className="flex items-center sm:justify-center gap-3 overflow-x-auto px-4 pt-5 md:pt-0 bg-white">
 
       {/* Brand buttons */}
       {brands.map((item) => {
